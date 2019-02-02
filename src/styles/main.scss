@@ -1,0 +1,41 @@
+@import "config";
+
+body{
+  background-color:$background-col;
+  width: 100vw;
+  height:100vh;
+}
+
+.foreground{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 94vw;
+  height: 94vh;
+  background-color:white;
+
+  @media (max-width: 899px){
+    margin-left: 20px;
+  }
+  @media (max-width: 499px){
+    margin-left: 15px;
+  }
+}
+
+section{
+  margin: 0 auto;
+}
+.quizbox{
+  margin: 0 auto;
+  text-align: center;
+}
+.row{
+  @include row();
+}
+.col--6{
+  @include columns(6);
+}
+.col--12{
+  @include columns(12);
+}
+
+  

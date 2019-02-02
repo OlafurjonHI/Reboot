@@ -4,6 +4,8 @@ $gutter: 20px;
 $font-main: Lora, "Times New Roman", serif;
 $font-heading: "Roboto Mono", "Courier New", monospace;
 
+$background-col:#01BFB6;
+
 @mixin row() {
   display: flex;
 
