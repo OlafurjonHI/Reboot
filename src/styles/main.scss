@@ -1,5 +1,13 @@
 @import "config";
 
+@font-face {
+  font-family: AlfaSlab;
+  src: url("/fonts/AlfaSlabOne-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+
+
 body{
   background-color:$background-col;
   width: 100vw;
@@ -10,9 +18,10 @@ body{
   margin: 0 auto;
   margin-top: 20px;
   width: 94vw;
-  height: 94vh;
   background-color:white;
-
+  display: flex;
+  align-items: center;
+      flex-direction: column;
   @media (max-width: 899px){
     margin-left: 20px;
   }
@@ -24,18 +33,66 @@ body{
 section{
   margin: 0 auto;
 }
-.quizbox{
+.quizbox{ 
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  
+}  
+.main__question{
+  font-family: "AlfaSlab";
+  font-size:7vw;
+
 }
 .row{
   @include row();
 }
 .col--6{
-  @include columns(6);
+  @include columns(11);
+  @media (min-width: 500px){
+     @include columns(5);
+
+  }
 }
 .col--12{
   @include columns(12);
 }
+.answerbox{
+  @include row();
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+}
+.answer:hover{
+  border-color:green;
+}
+.quizbox__question{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.question__container{
+  margin:0 auto;
+  width: 80%;
+}
+.answer{
+  border: 5px solid gray;
+  border-radius: 4px;
+  margin: 10px;
+}
 
-  
+.welcome{
+  text-align: left;
+  font-size: 3.5vw;
+
+}
+.answer__box__img{
+  height: 100%;
+  max-width:100%;
+
+}
+.answer__img{
+  width: 100%;
+  max-height: 100%;
+}
+
