@@ -2,7 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 let maindata;
-fetch('data.json')
+let counter = 0;
+fetch('./data.json')
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -22,7 +23,14 @@ fetch('data.json')
   for (var i = 0; i < answers.length; i++) {
   	answers[i].addEventListener('click', (e)=> {
  		let type = extractType(e.target.parentNode)
-  		updateQnA(maindata[0][type][0]['1'][0]);
+ 		counter++;
+ 		if(counter % 2 !== 0){
+ 			updateQnA(maindata[0][type][0]['1'][0]);
+ 		}
+ 		else{
+ 			endgame(maindata[0]['endgame'][0]['1'][0]);
+ 		}
+  		
   	});
   }
 
@@ -63,13 +71,44 @@ function updateQnA(data){
 	question.innerHTML = Q;
 }
 
+function endgame(data){
+	let box  = document.querySelector(".answerbox");
+	let welc = document.querySelector('.welcome');
+	let h3 = welc.querySelector('h3');
+	let question = document.querySelector('.main__question').firstElementChild;
+	let endgame = document.createElement('div');
+	endgame.classList.add('endgame');
 
-function getData(url){
-  fetch(url)
-  .then((res) => {
-    if (!res.ok) {
-      throw new Error('Gat ekki Sótt Gögn');
-    }
-    return res.json();
-  });
+	let divimg = document.createElement('div');
+	divimg.classList.add('endgame__img__box');
+	let img = document.createElement('img');
+	img.setAttribute('src',data['img']);
+	divimg.appendChild(img);
+
+	while(box.firstChild){
+		box.removeChild(box.firstChild);
+	}
+	let span = document.createElement('span');
+	span.appendChild(document.createTextNode(data['desc']));
+	span.classList.add('endgame__text');
+	endgame.appendChild(divimg);
+	endgame.appendChild(span);
+	h3.innerHTML = "You should like";
+	question.innerHTML = data['name'];
+	
+	let buttonbox = document.createElement('div');
+	buttonbox.classList.add('endgame_bt_row');
+	let  bt1  = document.createElement('div');
+	let  bt2  = document.createElement('div');
+	bt1.classList.add('endgame__button');
+	bt2.classList.add('endgame__button');
+	bt1.appendChild(document.createTextNode("Take me there!"));
+	bt2.appendChild(document.createTextNode("Let's get something more specific"));
+	
+	buttonbox.appendChild(bt1)
+	buttonbox.appendChild(bt2);
+	endgame.appendChild(buttonbox);
+	box.appendChild(endgame);
+	
+	
 }

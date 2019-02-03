@@ -21,9 +21,9 @@
       "1": [{
         "Q": "What kind of mood?",
         "1": "Dance",
-        "2": "craft",
+        "2": "Craft",
         "3": "Cosy",
-        "4": "music"
+        "4": "Music"
       }],
       "2": [{
         "Q": "What's your poison?",
@@ -41,8 +41,15 @@
         "3": "Awesome!",
         "4": "fine..."
       }]
-
-    }]
+    }],
+    "endgame": [{
+      "1": [{
+        "img": "img/mikkeller.jpg",
+        "name": "Mikkeller",
+        "desc": "A Very good and crafty place to have some good times"
+      }]
 
   }]
+}]
+
 }
