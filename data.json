@@ -1,0 +1,48 @@
+{
+  "data": [{
+    "hungry": [{
+      "1": [{
+        "Q": "What are you craving?",
+        "1": "Vegan",
+        "2": "Grill",
+        "3": "Fast Food",
+        "4": "Local"
+      }],
+      "2": [{
+        "Q": "What are you craving2?",
+        "1": "Vegan2",
+        "2": "Grill2",
+        "3": "Fast Food2",
+        "4": "Local2"
+      }]
+
+    }],
+    "thirsty": [{
+      "1": [{
+        "Q": "What kind of mood?",
+        "1": "Dance",
+        "2": "craft",
+        "3": "Cosy",
+        "4": "music"
+      }],
+      "2": [{
+        "Q": "What's your poison?",
+        "1": "Whiskey",
+        "2": "Beer",
+        "3": "G&T",
+        "4": "Anything strong"
+      }]
+    }],
+    "null": [{
+      "1": [{
+        "Q": "How do you feel?",
+        "1": "Good",
+        "2": "Great!",
+        "3": "Awesome!",
+        "4": "fine..."
+      }]
+
+    }]
+
+  }]
+}
