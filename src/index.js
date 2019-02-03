@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 let maindata;
 let counter = 0;
+let qnr = 1;
 fetch('./data.json')
       .then((response) => {
         if (response.ok) {
@@ -10,7 +11,7 @@ fetch('./data.json')
         } throw new Error('Villa kom upp');
       })
       .then((data) => {
-      	console.log(data.data[0]["hungry"][0]['1'][0]['Q']);
+      	console.log(data.data[0]["hungry"][0][qnr][0]['Q']);
       	 maindata = data.data;
       })
       .catch((error) => {
@@ -25,10 +26,13 @@ fetch('./data.json')
  		let type = extractType(e.target.parentNode)
  		counter++;
  		if(counter % 2 !== 0){
- 			updateQnA(maindata[0][type][0]['1'][0]);
+ 			updateQnA(maindata[0][type][0][qnr][0]);
  		}
  		else{
- 			endgame(maindata[0]['endgame'][0]['1'][0]);
+ 			
+ 			endgame(maindata[0]['endgame'][0][qnr][0],maindata,type,qnr);
+ 			qnr++;
+
  		}
   		
   	});
@@ -50,7 +54,9 @@ function extractType(parent){
 	return type
 }
 
+function addEventNewQnA(el){
 
+}
 
 function updateQnA(data){
 	let question = document.querySelector('.main__question').firstElementChild;
@@ -71,7 +77,7 @@ function updateQnA(data){
 	question.innerHTML = Q;
 }
 
-function endgame(data){
+function endgame(data,maindata,type,qnr){
 	let box  = document.querySelector(".answerbox");
 	let welc = document.querySelector('.welcome');
 	let h3 = welc.querySelector('h3');
@@ -103,8 +109,16 @@ function endgame(data){
 	bt1.classList.add('endgame__button');
 	bt2.classList.add('endgame__button');
 	bt1.appendChild(document.createTextNode("Take me there!"));
+	bt1.addEventListener('click',()=>{
+		window.location.replace("https://ja.is/kort/?d=hashid%3AVl47R&x=357293&y=408236&z=8&ja360=1&jh=134.5&type=map");
+	});
+	qnr++;
 	bt2.appendChild(document.createTextNode("Let's get something more specific"));
-	
+	bt2.addEventListener('click',()=>{
+
+		//updateQnA(maindata[0][type][0][qnr][0]);
+	});
+
 	buttonbox.appendChild(bt1)
 	buttonbox.appendChild(bt2);
 	endgame.appendChild(buttonbox);
